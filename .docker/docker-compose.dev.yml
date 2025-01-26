@@ -9,11 +9,19 @@ services:
       - NODE_ENV=dev
     env_file:
       - ../.env.dev
-    command: ['npm', 'run', 'start:dev']
+    command: >
+      sh -c "
+      npm uninstall bcrypt &&
+      npm install bcrypt &&
+      npm run start:dev
+      "
     volumes:
       - ../:/app
-      - /app/node_modules
+      - node_modules:/app/node_modules
     labels:
       - com.host.description=dev
-    depends_on:
-      - db
+    # depends_on:
+    #   - db
+
+volumes:
+  node_modules:

@@ -1,10 +1,8 @@
-<h1>Register</h1>
-
-<form action="/register" method="POST">
-  <div>
-    <label for="name">Name</label>
-    <input type="text" name="name" id="name" required />
-  </div>
+<h1>Login</h1>
+<%if (messages.error) { %>
+<%= messages.error %>
+<% } %>
+<form action="/api/auth/sign-in" method="POST">
   <div>
     <label for="email">Email</label>
     <input type="email" name="email" id="email" required />
@@ -13,6 +11,6 @@
     <label for="password">Password</label>
     <input type="password" name="password" id="password" required />
   </div>
-  <button type="submit">Register</button>
+  <button type="submit">Login</button>
 </form>
-<a href="/login">Login</a>
+<a href="/sign-up">Register</a>
